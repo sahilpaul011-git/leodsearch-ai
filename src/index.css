@@ -1,0 +1,143 @@
+/* ============================================
+   LeodSearch AI — Design System
+   Dreamy, cinematic, web-inspired theme
+   ============================================ */
+
+:root {
+  /* Color palette */
+  --midnight-navy: #080B1C;
+  --cosmic-blue: #101A3A;
+  --electric-blue: #428DFF;
+  --dreamy-violet: #956BFF;
+  --soft-magenta: #E36BCE;
+  --subtle-crimson: #E84B68;
+  --soft-white: #F3F5FF;
+
+  /* Derived tones */
+  --surface: rgba(243, 245, 255, 0.04);
+  --surface-hover: rgba(243, 245, 255, 0.07);
+  --border-glow: rgba(149, 107, 255, 0.35);
+  --text-primary: var(--soft-white);
+  --text-secondary: rgba(243, 245, 255, 0.65);
+  --text-muted: rgba(243, 245, 255, 0.4);
+
+  /* Gradients */
+  --gradient-bg: radial-gradient(ellipse 120% 80% at 50% -10%, var(--cosmic-blue) 0%, var(--midnight-navy) 55%, #050711 100%);
+  --gradient-accent: linear-gradient(135deg, var(--electric-blue) 0%, var(--dreamy-violet) 55%, var(--soft-magenta) 100%);
+  --gradient-text: linear-gradient(135deg, var(--soft-white) 0%, var(--electric-blue) 50%, var(--dreamy-violet) 100%);
+
+  /* Spacing + shape */
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ============================================
+   Ambient background atmosphere
+   Soft stars + light particles, lightweight
+   (pure CSS, no heavy canvas/3D)
+   ============================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(243, 245, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 65% 15%, rgba(243, 245, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 80% 55%, rgba(243, 245, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 35% 70%, rgba(243, 245, 255, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 90% 80%, rgba(243, 245, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 10% 85%, rgba(243, 245, 255, 0.3), transparent);
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(66, 141, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(149, 107, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 75% 85%, rgba(227, 107, 206, 0.08), transparent 40%);
+}
+
+/* ============================================
+   Shared utility classes
+   ============================================ */
+
+.glow-border {
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 0 1px rgba(149, 107, 255, 0.08), 0 8px 32px rgba(66, 141, 255, 0.08);
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.glow-border:hover,
+.glow-border:focus-within {
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 0 1px rgba(66, 141, 255, 0.25), 0 0 24px rgba(66, 141, 255, 0.25);
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.surface-card {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(243, 245, 255, 0.08);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ============================================
+   Respect reduced motion preferences
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
