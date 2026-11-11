@@ -47,10 +47,12 @@ export default function SearchResults() {
   const [inputValue, setInputValue] = useState(query)
   const [status, setStatus] = useState('loading') // loading | success | error
   const [data, setData] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     if (!query.trim()) {
       setStatus('error')
+      setErrorMessage('Type something to search for.')
       return
     }
     let cancelled = false
@@ -65,8 +67,11 @@ export default function SearchResults() {
           setStatus('success')
         }
       })
-      .catch(() => {
-        if (!cancelled) setStatus('error')
+      .catch((err) => {
+        if (!cancelled) {
+          setStatus('error')
+          setErrorMessage(err?.message || 'Something went wrong with that search.')
+        }
       })
 
     return () => {
@@ -130,7 +135,7 @@ export default function SearchResults() {
 
         {status === 'error' && (
           <div className="state-panel state-panel-error">
-            <p>{query.trim() ? 'Something went wrong with that search.' : 'Type something to search for.'}</p>
+            <p>{errorMessage}</p>
             <button className="retry-btn" onClick={() => navigate('/')}>
               Back to search
             </button>
