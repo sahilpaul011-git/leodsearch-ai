@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react'
+import WebNetworkBackground from './components/WebNetworkBackground.jsx'
 
 function SearchIcon() {
   return (
@@ -73,6 +74,7 @@ export default function App() {
 
   return (
     <div className="home">
+      <WebNetworkBackground />
       <header className="home-nav">
         <div className="brand">
           <LogoMark />

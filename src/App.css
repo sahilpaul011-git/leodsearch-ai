@@ -2,6 +2,35 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.web-network-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  animation: web-drift 18s ease-in-out infinite;
+}
+
+@keyframes web-drift {
+  0%, 100% { opacity: 0.85; transform: scale(1) translateY(0); }
+  50% { opacity: 1; transform: scale(1.015) translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .web-network-bg {
+    animation: none;
+  }
+}
+
+.home-nav,
+.hero {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== Nav ===== */
