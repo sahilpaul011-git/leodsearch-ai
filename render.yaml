@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: leodsearch-backend
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7070
+      - key: ALLOWED_ORIGIN
+        value: https://sahilpaul011-git.github.io
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: 30
