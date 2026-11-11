@@ -1,0 +1,185 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Nav ===== */
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+}
+
+/* ===== Hero ===== */
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 20px 64px;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  margin: 0 0 36px;
+}
+
+/* ===== Search bar ===== */
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16, 26, 58, 0.55);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-pill);
+  padding: 8px 8px 8px 20px;
+}
+
+.search-icon {
+  display: flex;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 10px 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-submit {
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--soft-white);
+  background: var(--gradient-accent);
+  cursor: pointer;
+  transition: filter var(--transition-base), transform var(--transition-base);
+}
+
+.search-submit:hover {
+  filter: brightness(1.1);
+}
+
+.search-submit:active {
+  transform: scale(0.97);
+}
+
+/* ===== Mode selector ===== */
+
+.mode-selector {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mode-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(243, 245, 255, 0.12);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.mode-chip:hover {
+  border-color: rgba(149, 107, 255, 0.4);
+  color: var(--text-primary);
+}
+
+.mode-chip-active {
+  background: rgba(149, 107, 255, 0.12);
+  border-color: var(--dreamy-violet);
+  color: var(--text-primary);
+}
+
+/* ===== Suggestions ===== */
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.suggestion-chip {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(243, 245, 255, 0.08);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-chip:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-glow);
+  color: var(--text-primary);
+}
+
+/* ===== Mobile tuning ===== */
+
+@media (max-width: 480px) {
+  .suggestion-chip {
+    max-width: 85vw;
+    white-space: normal;
+  }
+}
