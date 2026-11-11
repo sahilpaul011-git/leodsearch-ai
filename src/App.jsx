@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import WebNetworkBackground from './components/WebNetworkBackground.jsx'
 
 function SearchIcon() {
@@ -64,12 +65,12 @@ function LogoMark() {
 export default function App() {
   const [query, setQuery] = useState('')
   const [mode, setMode] = useState('web')
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!query.trim()) return
-    // Search execution wires up in a later stage once the backend exists.
-    console.log('Search submitted:', { query, mode })
+    navigate(`/search?q=${encodeURIComponent(query.trim())}&mode=${mode}`)
   }
 
   return (

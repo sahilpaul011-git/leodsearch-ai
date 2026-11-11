@@ -1,0 +1,294 @@
+.results-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+
+.results-page .web-network-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.results-nav,
+.results-mode-tabs,
+.results-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Top bar ===== */
+
+.results-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.icon-btn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 245, 255, 0.1);
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.icon-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-glow);
+}
+
+.results-search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16, 26, 58, 0.55);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+}
+
+.results-search-bar .search-icon {
+  color: var(--text-muted);
+  display: flex;
+}
+
+.results-search-bar .search-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  padding: 8px 0;
+}
+
+/* ===== Mode tabs ===== */
+
+.results-mode-tabs {
+  display: flex;
+  gap: 8px;
+  max-width: 760px;
+  margin: 4px auto 0;
+  padding: 0 20px;
+}
+
+.results-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.results-tab:hover {
+  color: var(--text-secondary);
+}
+
+.results-tab-active {
+  background: rgba(149, 107, 255, 0.12);
+  border-color: var(--dreamy-violet);
+  color: var(--text-primary);
+}
+
+/* ===== Body / states ===== */
+
+.results-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 0;
+}
+
+.state-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 20px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.state-panel-error {
+  color: var(--text-secondary);
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(243, 245, 255, 0.15);
+  border-top-color: var(--electric-blue);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
+
+.retry-btn {
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--soft-white);
+  background: var(--gradient-accent);
+  cursor: pointer;
+}
+
+.mock-banner {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: rgba(243, 245, 255, 0.04);
+  border: 1px solid rgba(243, 245, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+}
+
+/* ===== Web result cards ===== */
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.result-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(16, 26, 58, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.result-source {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--electric-blue);
+  margin-bottom: 6px;
+}
+
+.result-title {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.result-snippet {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ===== Knowledge panel ===== */
+
+.knowledge-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ai-answer-card {
+  padding: 20px;
+}
+
+.ai-answer-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dreamy-violet);
+  margin-bottom: 12px;
+}
+
+.ai-answer-summary {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.ai-answer-points {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.sources-card {
+  padding: 16px 20px;
+}
+
+.sources-label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.sources-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sources-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--electric-blue);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.sources-list a:hover {
+  text-decoration: underline;
+}
